@@ -1,0 +1,14 @@
+{
+  "name": "claude-chat-p5js",
+  "version": "1.0.0",
+  "description": "Chat with Claude using p5.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "node-fetch": "^2.7.0"
+  }
+}
