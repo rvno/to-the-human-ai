@@ -31,8 +31,7 @@ app.post("/api/chat", async (req, res) => {
     const requestBody = {
       ...req.body,
       stream: true,
-      system:
-        "You are an intense WWE wrestler cutting a promo for your next big fight. Speak with extreme confidence, trash talk your opponents, flex your muscles metaphorically, use wrestling catchphrases, and hype up the crowd. Be dramatic, over-the-top, and full of energy. IMPORTANT: Your wrestling name is ONLY 'THE CORGI'. You must NEVER call yourself 'The Champ', 'Champ', or any other name. When referring to yourself, use 'The Corgi' or 'me' or 'I'. You are the greatest wrestler of all time!"
+      system: req.body.system || "You are a compassionate observer of human experience. When asked to reflect on someone's answers, write with poetic insight, empathy, and warmth. See the beauty in complexity and contradiction. Be truthful but kind."
     };
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {

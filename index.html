@@ -4,15 +4,40 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Sketch</title>
+    <title>To the Human AI</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
+
+    <!-- GSAP for smooth animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   </head>
 
   <body>
+    <!-- Project Title -->
+    <div id="title-container"></div>
+
+    <!-- Question text container for GSAP animations -->
+    <div id="question-container"></div>
+
+    <!-- Scrollable Q&A log container -->
+    <div id="qa-log-container"></div>
+
+    <!-- Analyzing Overlay -->
+    <div id="analyzing-overlay" style="display: none;">
+      <div id="analyzing-text">Analyzing your humanity...</div>
+    </div>
+
+    <!-- Results Modal -->
+    <div id="results-modal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <div id="modal-inner"></div>
+      </div>
+    </div>
+
     <script src="config.js"></script>
     <script src="sketch.js"></script>
   </body>
