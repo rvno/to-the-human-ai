@@ -80,14 +80,14 @@ let pieSlices = []; // Store slice data for hover detection
 // =============================================================================
 
 const emotionKeywords = {
-  wonder: ['beautiful', 'amazing', 'alive', 'magic', 'awe', 'wonder', 'incredible', 'startle', 'surprise', 'breathtaking', 'mesmerize'],
-  joy: ['happy', 'laugh', 'joy', 'delight', 'sunshine', 'smile', 'fun', 'bright', 'giggle', 'cheerful', 'excited', 'thrill'],
-  love: ['love', 'heart', 'connection', 'together', 'care', 'close', 'bond', 'cherish', 'adore', 'warmth', 'tender', 'affection'],
-  grief: ['loss', 'miss', 'gone', 'goodbye', 'empty', 'lost', 'never', 'anymore', 'ache', 'mourn', 'sorrow', 'absence'],
-  fear: ['afraid', 'scared', 'worry', 'anxious', 'uncertain', 'fear', 'nervous', 'doubt', 'terrified', 'panic', 'dread'],
-  peace: ['calm', 'quiet', 'peace', 'gentle', 'soft', 'still', 'breathe', 'ease', 'serene', 'tranquil', 'rest', 'settle'],
-  hope: ['hope', 'tomorrow', 'dream', 'wish', 'future', 'someday', 'will', 'possibility', 'maybe', 'aspire', 'imagine'],
-  longing: ['want', 'yearn', 'crave', 'desire', 'long', 'wish', 'ache', 'hunger', 'need', 'seek', 'search']
+  wonder: ['beautiful', 'amazing', 'alive', 'magic', 'awe', 'wonder', 'incredible', 'startle', 'surprise', 'breathtaking', 'mesmerize', 'extraordinary', 'magnificent', 'stunning', 'remarkable'],
+  joy: ['happy', 'laugh', 'joy', 'delight', 'sunshine', 'smile', 'fun', 'bright', 'giggle', 'cheerful', 'excited', 'thrill', 'elated', 'bliss', 'glee', 'ecstatic'],
+  love: ['love', 'heart', 'connection', 'together', 'care', 'close', 'bond', 'cherish', 'adore', 'warmth', 'tender', 'affection', 'devotion', 'embrace', 'beloved', 'precious'],
+  grief: ['loss', 'miss', 'gone', 'goodbye', 'empty', 'lost', 'never', 'anymore', 'ache', 'mourn', 'sorrow', 'absence', 'tears', 'grief', 'departed', 'void'],
+  fear: ['afraid', 'scared', 'worry', 'anxious', 'uncertain', 'fear', 'nervous', 'doubt', 'terrified', 'panic', 'dread', 'overwhelmed', 'uneasy', 'stress'],
+  peace: ['calm', 'peace', 'serene', 'tranquil', 'settled'],
+  hope: ['hope', 'tomorrow', 'dream', 'wish', 'future', 'someday', 'will', 'possibility', 'maybe', 'aspire', 'imagine', 'optimistic', 'faith', 'believe', 'envision', 'forward'],
+  longing: ['want', 'yearn', 'crave', 'desire', 'long', 'wish', 'ache', 'hunger', 'need', 'seek', 'search', 'miss', 'longing', 'yearn', 'pine']
 };
 
 const emotionColors = {

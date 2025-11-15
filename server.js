@@ -3,12 +3,17 @@ const cors = require("cors");
 const fetch = require("node-fetch");
 const fs = require("fs");
 
-// Load API key from config.js
-const configContent = fs.readFileSync("./config.js", "utf8");
-const apiKeyMatch = configContent.match(
-  /ANTHROPIC_API_KEY:\s*["']([^"']+)["']/
-);
-const API_KEY = apiKeyMatch ? apiKeyMatch[1] : null;
+// Load API key from environment variable or config.js (for local dev)
+let API_KEY = process.env.ANTHROPIC_API_KEY;
+
+// if no env variable, try loading from config.js (local dev)
+if (!API_KEY && fs.existsSync("./config.js")) {
+  const configContent = fs.readFileSync("./config.js", "utf8");
+  const apiKeyMatch = configContent.match(
+    /ANTHROPIC_API_KEY:\s*["']([^"']+)["']/
+  );
+  API_KEY = apiKeyMatch ? apiKeyMatch[1] : null;
+}
 
 if (!API_KEY) {
   console.error("ERROR: Could not find API key in config.js");
@@ -16,7 +21,7 @@ if (!API_KEY) {
 }
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
@@ -31,7 +36,9 @@ app.post("/api/chat", async (req, res) => {
     const requestBody = {
       ...req.body,
       stream: true,
-      system: req.body.system || "You are a compassionate observer of human experience. When asked to reflect on someone's answers, write with poetic insight, empathy, and warmth. See the beauty in complexity and contradiction. Be truthful but kind."
+      system:
+        req.body.system ||
+        "You are a compassionate observer of human experience. When asked to reflect on someone's answers, write with poetic insight, empathy, and warmth. See the beauty in complexity and contradiction. Be truthful but kind.",
     };
 
     const response = await fetch("https://api.anthropic.com/v1/messages", {
@@ -39,9 +46,9 @@ app.post("/api/chat", async (req, res) => {
       headers: {
         "Content-Type": "application/json",
         "x-api-key": API_KEY,
-        "anthropic-version": "2023-06-01"
+        "anthropic-version": "2023-06-01",
       },
-      body: JSON.stringify(requestBody)
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
@@ -56,7 +63,7 @@ app.post("/api/chat", async (req, res) => {
 
     // Stream the response back to the client
     const reader = response.body;
-    reader.on("data", chunk => {
+    reader.on("data", (chunk) => {
       res.write(chunk);
     });
 
@@ -64,7 +71,7 @@ app.post("/api/chat", async (req, res) => {
       res.end();
     });
 
-    reader.on("error", error => {
+    reader.on("error", (error) => {
       console.error("Streaming error:", error);
       res.end();
     });
